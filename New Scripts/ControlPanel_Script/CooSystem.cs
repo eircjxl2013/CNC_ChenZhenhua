@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.IO;
 
@@ -18,8 +18,17 @@ public class CooSystem : MonoBehaviour {
 	public Vector3 G58_pos = new Vector3(0,0,0);
 	public Vector3 G59_pos = new Vector3(0,0,0);
 	public Vector3 workpiece_coo = new Vector3(0,0,0);
-	
-	string[] coo_name = new string[7]{"G00", "G54", "G55", "G56", "G57", "G58", "G59"};
+		//设置界面里面的参数
+	public string parameter = "0";
+	public string TV = "0";
+	public string CKJC = "0";
+	public string input_unit = "0";
+	public string IO = "0";
+	public string order = "0";
+	public string zhidai = "0";
+	public string order_stop1 = "0";
+	public string order_stop2 = "0";
+	//设置界面里面的参数
 
 	void Awake () {
 		
@@ -32,8 +41,303 @@ public class CooSystem : MonoBehaviour {
 		ReadCooFile();
 		workpiece_coo = G54_pos;
 		workpiece_flag = 1;
+		
+		
+		//获得设置界面显示值
+		if(PlayerPrefs.HasKey("parameter"))
+			parameter = PlayerPrefs.GetString("parameter");
+		else
+			PlayerPrefs.SetString("parameter", "0");
+		
+		if(PlayerPrefs.HasKey("TV"))
+			TV = PlayerPrefs.GetString("TV");
+		else
+			PlayerPrefs.SetString("TV", "0");
+		
+		if(PlayerPrefs.HasKey("CKJC"))
+			CKJC = PlayerPrefs.GetString("CKJC");
+		else
+			PlayerPrefs.SetString("CKJC", "0");
+		
+		if(PlayerPrefs.HasKey("input_unit"))
+			input_unit = PlayerPrefs.GetString("input_unit");
+		else
+			PlayerPrefs.SetString("input_unit", "0");
+		
+		if(PlayerPrefs.HasKey("IO"))
+			IO = PlayerPrefs.GetString("IO");
+		else
+			PlayerPrefs.SetString("IO", "0");
+		
+		if(PlayerPrefs.HasKey("order"))
+			order = PlayerPrefs.GetString("order");
+		else
+			PlayerPrefs.SetString("order", "0");
+		
+		if(PlayerPrefs.HasKey("zhidai"))
+			zhidai = PlayerPrefs.GetString("zhidai");
+		else
+			PlayerPrefs.SetString("zhidai", "0");
+		
+		if(PlayerPrefs.HasKey("order_stop1"))
+			order_stop1 = PlayerPrefs.GetString("order_stop1");
+		else
+			PlayerPrefs.SetString("order_stop1", "0");
+		
+		if(PlayerPrefs.HasKey("order_stop2"))
+			order_stop2 = PlayerPrefs.GetString("order_stop2");
+		else
+			PlayerPrefs.SetString("order_stop2", "0");
+		//获得设置界面显示值
 	}
 	
+	//设定界面下移
+	public void argu_down()
+	{
+		switch(ControlPanel_script.argu_setting)
+		{
+		case 1:
+		ControlPanel_script.argu_setting = 2;
+			//Debug.Log("can run");
+		ArguCursorPos();
+		break;
+		case 2:
+		ControlPanel_script.argu_setting = 3;
+		ArguCursorPos();
+		break;
+		case 3:
+		ControlPanel_script.argu_setting = 4;
+		ArguCursorPos();
+		break;
+		case 4:
+		ControlPanel_script.argu_setting = 5;
+		ArguCursorPos();
+		break;
+		case 5:
+		ControlPanel_script.argu_setting = 6;
+		ArguCursorPos();
+		break;
+		case 6:
+		ControlPanel_script.argu_setting = 7;
+		ArguCursorPos();
+		break;
+		case 7:
+		ControlPanel_script.argu_setting = 8;
+		ArguCursorPos();
+		break;
+		case 8:
+		ControlPanel_script.argu_setting = 9;
+		ArguCursorPos();
+		break;
+		}
+	}
+	//设定界面下移
+	
+		//设定界面上移
+	public void argu_up()
+	{
+		switch(ControlPanel_script.argu_setting)
+		{
+		case 9:
+		ControlPanel_script.argu_setting = 8;
+		ArguCursorPos();
+		break;
+		case 8:
+		ControlPanel_script.argu_setting = 7;
+		ArguCursorPos();
+		break;
+		case 7:
+		ControlPanel_script.argu_setting = 6;
+		ArguCursorPos();
+		break;
+		case 6:
+		ControlPanel_script.argu_setting = 5;
+		ArguCursorPos();
+		break;
+		case 5:
+		ControlPanel_script.argu_setting = 4;
+		ArguCursorPos();
+		break;
+		case 4:
+		ControlPanel_script.argu_setting = 3;
+		ArguCursorPos();
+		break;
+		case 3:
+		ControlPanel_script.argu_setting = 2;
+		ArguCursorPos();
+		break;
+		case 2:
+		ControlPanel_script.argu_setting = 1;
+		ArguCursorPos();
+		break;
+		}
+	}
+	//设定界面上移
+	
+	//黄色背景位置
+	public void ArguCursorPos()
+	{
+		switch(ControlPanel_script.argu_setting)
+		{
+		case 1:
+	    ControlPanel_script.argu_setting_cursor_y = 61.5f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 2:
+		ControlPanel_script.argu_setting_cursor_y = 86.5f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 3:
+		ControlPanel_script.argu_setting_cursor_y = 112f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 4:
+		ControlPanel_script.argu_setting_cursor_y = 136.5f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 5:
+		ControlPanel_script.argu_setting_cursor_y = 161.5f;
+		ControlPanel_script.argu_setting_cursor_w = 36f;
+			break;
+		case 6:
+		ControlPanel_script.argu_setting_cursor_y = 186.5f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 7:
+		ControlPanel_script.argu_setting_cursor_y = 212f;
+		ControlPanel_script.argu_setting_cursor_w = 16f;
+			break;
+		case 8:
+		ControlPanel_script.argu_setting_cursor_y = 236.5f;
+		ControlPanel_script.argu_setting_cursor_w = 116f;
+			break;
+		case 9:
+		ControlPanel_script.argu_setting_cursor_y = 261.5f;
+		ControlPanel_script.argu_setting_cursor_w = 116f;
+			break;
+		}
+	}
+	//黄色背景位置
+	
+	//输入值传入
+	public void set_parameter(string input)
+	{
+		//Debug.Log(input);
+		switch (ControlPanel_script.argu_setting)
+		{
+		case 1:
+			if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("parameter", input);
+		    parameter = PlayerPrefs.GetString("parameter");
+			//Debug.Log(parameter);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 2:
+		    if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("TV", input);
+			TV = PlayerPrefs.GetString("TV");
+			//Debug.Log(TV);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 3:
+			if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("CKJC", input);
+			CKJC = PlayerPrefs.GetString("CKJC");
+			//Debug.Log(CKJC);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 4:
+			if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("input_unit", input);
+			input_unit = PlayerPrefs.GetString("input_unit");
+			//Debug.Log(input_unit);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 5:
+			if( input == "0" || input=="1" || input=="2" || input=="3"|| input=="4"|| input=="5"|| input=="6"|| input=="7"|| input=="8"|| input=="9"
+				|| input=="10"|| input=="11"|| input=="12"|| input=="13"|| input=="14"|| input=="15"|| input=="16"|| input=="17"|| input=="18"|| input=="19"
+				|| input=="20"|| input=="21"|| input=="22"|| input=="23"|| input=="24"|| input=="25"|| input=="26"|| input=="27"|| input=="28"|| input=="29"
+				|| input=="30"|| input=="31"|| input=="32"|| input=="33"|| input=="34"|| input=="35")
+			{
+			PlayerPrefs.SetString("IO", input);
+			IO = PlayerPrefs.GetString("IO");
+			//Debug.Log(IO);
+			}
+			else
+			{
+				Debug.Log("请输入0~35");
+				return;
+			}
+			break;
+		case 6:
+			if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("order", input);
+			order= PlayerPrefs.GetString("order");
+			//Debug.Log(order);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 7:
+			if( input == "0" || input=="1")
+			{
+			PlayerPrefs.SetString("zhidai", input);
+			zhidai = PlayerPrefs.GetString("zhidai");
+			//Debug.Log(zhidai);
+			}
+			else
+			{
+				Debug.Log("请输入0或1");
+				return;
+			}
+			break;
+		case 8:
+			PlayerPrefs.SetString("order_stop1", input);
+			order_stop1 = PlayerPrefs.GetString("order_stop1");
+			//Debug.Log(order_stop1);
+			break;
+		case 9:
+			PlayerPrefs.SetString("order_stop2", input);
+			order_stop2 = PlayerPrefs.GetString("order_stop2");
+			//Debug.Log(order_stop2);
+			break;
+		default:
+			Debug.Log("out of range");
+			break;
+		}
+		
+	}
+	//输入值传入
+
+	//参数界面内容
 	public void ReadCooFile () 
 	{
 		string line_str = "";

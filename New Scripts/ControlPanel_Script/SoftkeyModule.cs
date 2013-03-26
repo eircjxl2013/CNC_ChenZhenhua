@@ -105,6 +105,14 @@ public class SoftkeyModule : MonoBehaviour {
 					Main.OffSetOne = true;
 				}
 			}
+			if(Main.OffSetSetting)
+			{
+				if(Main.OffSetTwo)
+				{
+					Main.OffSetTwo = false;
+					Main.OffSetOne = true;
+				}
+			}
 			if(Main.OffSetCoo)
 			{
 				if(Main.OffSetTwo)
@@ -531,16 +539,20 @@ public class SoftkeyModule : MonoBehaviour {
 		{
 			if(Main.OffSetOne)
 			{
+				
 				Main.OffSetTool = false;
 				Main.OffSetSetting = true;
 				Main.OffSetCoo = false;
-			}
-			else if(Main.OffSetCoo)
-			{
-				CooSystem_script.Measure(Main.InputText);
+			if (Main.OffSetSetting)
+				{	
+			 if(Main.InputText != "")
+				{	
+				CooSystem_script.set_parameter(Main.InputText);		
 				Main.InputText = "";
 				Main.CursorText.text = Main.InputText;
 				Main.ProgEDITCusorPos = 57f;
+				}
+				}
 			}
 		}
 	}
@@ -611,7 +623,7 @@ public class SoftkeyModule : MonoBehaviour {
 			{
 				if(Main.InputText != "")
 				{
-					CooSystem_script.PlusInput(Main.InputText, true);
+					CooSystem_script.PlusInput(Main.InputText, true);  //第二页+输入后面的输入
 					Main.InputText = "";
 					Main.CursorText.text = Main.InputText;
 					Main.ProgEDITCusorPos = 57f;
@@ -699,6 +711,14 @@ public class SoftkeyModule : MonoBehaviour {
 		if(Main.SettingMenu)
 		{
 			if(Main.OffSetTool)
+			{
+				if(Main.OffSetOne)
+				{
+					Main.OffSetTwo = true;
+					Main.OffSetOne = false;
+				}
+			}
+			if(Main.OffSetSetting)
 			{
 				if(Main.OffSetOne)
 				{

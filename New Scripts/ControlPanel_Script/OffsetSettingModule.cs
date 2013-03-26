@@ -40,6 +40,13 @@ public class OffsetSettingModule : MonoBehaviour {
 	//刀偏设定界面
 	void ToolOffSet () {
 		GUI.Label(new Rect(40f/1000f*Main.width, 28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"刀偏", Main.sty_Title);
+		
+		GUI.Label(new Rect(40f/1000f*Main.width,60f/1000f*Main.height,45f/1000f*Main.width,20f/1000f*Main.height),"编号", Main.sty_MostWords);
+		
+		
+		
+		
+		
 		if(Main.OffSetOne)
 		{
 			Main.sty_BottomButton_1.normal.background = Main.t2d_BottomButton_d;
@@ -72,18 +79,85 @@ public class OffsetSettingModule : MonoBehaviour {
 		GUI.Label(new Rect(40f/1000f*Main.width,28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"设定（手持盒）", Main.sty_Title);
 		GUI.Label(new Rect(40f/1000f*Main.width, 55f/1000f*Main.height , 500f/1000f*Main.width,300f/1000f*Main.height), "", Main.sty_SettingsBG);
 		
+		GUI.Label(new Rect(45f/1000f*Main.width,60f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"写参数", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,60f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,60f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,60f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：不可以   1：可以）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,85f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"TV  检查", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,85f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,85f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,85f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：关断   1：接通）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,110f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"穿孔代码", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,110f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,110f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,110f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：EIA  1：ISO）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,135f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"输入单位", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,135f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,135f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,135f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：毫米   1：英寸）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,160f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"I/O  通道", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,160f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,160f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mid);
+		GUI.Label(new Rect(285f/1000f*Main.width,160f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0-35： 通道号   ）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,185f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"顺序号", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,185f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,185f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,185f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：关断   1：接通）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,210f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"纸带格式", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,210f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,210f/1000f*Main.height,21f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo_mini);
+		GUI.Label(new Rect(265f/1000f*Main.width,210f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（0：无变换 1：F10/11）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,235f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"顺序号停止", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,235f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,235f/1000f*Main.height,120f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+		GUI.Label(new Rect(365f/1000f*Main.width,235f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（ 程 序 号 ）", Main.sty_MostWords);
+		GUI.Label(new Rect(45f/1000f*Main.width,260f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"顺序号停止", Main.sty_MostWords);
+		GUI.Label(new Rect(220f/1000f*Main.width,260f/1000f*Main.height,20f/1000f*Main.width,25f/1000f*Main.height),"=", Main.sty_MostWords);
+		GUI.Label(new Rect(240f/1000f*Main.width,260f/1000f*Main.height,120f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+		GUI.Label(new Rect(365f/1000f*Main.width,260f/1000f*Main.height,500f/1000f*Main.width,25f/1000f*Main.height),"（ 顺 序 号 ）", Main.sty_MostWords);
+		
+		GUI.Label(new Rect(242f/1000f*Main.width, Main.argu_setting_cursor_y/1000f*Main.height,Main.argu_setting_cursor_w/1000f*Main.width,22f/1000f*Main.height),"", Main.sty_EDITCursor);
+		
+		GUI.Label(new Rect(243f/1000f*Main.width,60f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.parameter, Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,85f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.TV, Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,110f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.CKJC, Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,135f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.input_unit, Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,160f/1000f*Main.height,40f/1000f*Main.width,29f/1000f*Main.height),Main.ArguStringGet_IO(CooSystem_script.IO), Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,185f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.order, Main.sty_SmallNum);
+		GUI.Label(new Rect(243f/1000f*Main.width,210f/1000f*Main.height,20f/1000f*Main.width,29f/1000f*Main.height),CooSystem_script.zhidai, Main.sty_SmallNum);
+		GUI.Label(new Rect(248f/1000f*Main.width,235f/1000f*Main.height,120f/1000f*Main.width,29f/1000f*Main.height),Main.ArguStringGet(CooSystem_script.order_stop1), Main.sty_SmallNum);
+		GUI.Label(new Rect(248f/1000f*Main.width,260f/1000f*Main.height,120f/1000f*Main.width,29f/1000f*Main.height),Main.ArguStringGet(CooSystem_script.order_stop2), Main.sty_SmallNum);
 		
 		
-		Main.sty_BottomButton_1.normal.background = Main.t2d_BottomButton_u;
-		Main.sty_BottomButton_2.normal.background = Main.t2d_BottomButton_d;
-		Main.sty_BottomButton_3.normal.background = Main.t2d_BottomButton_u;
-		Main.sty_BottomButton_4.normal.background = Main.t2d_BottomButton_u;
-		Main.sty_BottomButton_5.normal.background = Main.t2d_BottomButton_u;
-		GUI.Label(new Rect(77f/1000f*Main.width,420f/1000f*Main.height,100f/1000f*Main.width,25f/1000f*Main.height),"刀 偏", Main.sty_BottomChooseMenu);
-		GUI.Label(new Rect(168f/1000f*Main.width,421f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"设 定", Main.sty_BottomChooseMenu);
-		GUI.Label(new Rect(258f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"坐标系", Main.sty_BottomChooseMenu);
-		GUI.Label(new Rect(420f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"（操 作）", Main.sty_BottomChooseMenu);
+		if(Main.OffSetOne)
+		{
+			Main.sty_BottomButton_1.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_2.normal.background = Main.t2d_BottomButton_d;
+			Main.sty_BottomButton_3.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_4.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_5.normal.background = Main.t2d_BottomButton_u;
+			GUI.Label(new Rect(77f/1000f*Main.width,420f/1000f*Main.height,100f/1000f*Main.width,25f/1000f*Main.height),"刀 偏", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(168f/1000f*Main.width,421f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"设 定", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(258f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"坐标系", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(420f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"（操 作）", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(523f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"+", Main.sty_MostWords);
+		}		
+		else if(Main.OffSetTwo)
+		{
+			Main.sty_BottomButton_1.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_2.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_3.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_4.normal.background = Main.t2d_BottomButton_u;
+			Main.sty_BottomButton_5.normal.background = Main.t2d_BottomButton_u;
+			GUI.Label(new Rect(44f/1000f*Main.width,423f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"<", Main.sty_MostWords);
+			GUI.Label(new Rect(73f/1000f*Main.width,420f/1000f*Main.height,100f/1000f*Main.width,25f/1000f*Main.height),"宏变量", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(168f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"模 式", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(261f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"操 作", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(420f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"（操 作）", Main.sty_BottomChooseMenu);
+		}
 	}
+	
+	
 	//工件坐标系设定界面
 	void CooOffSetting () {
 		GUI.Label(new Rect(40f/1000f*Main.width,28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"工件坐标系设定", Main.sty_Title);

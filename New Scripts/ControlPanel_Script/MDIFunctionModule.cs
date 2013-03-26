@@ -39,6 +39,16 @@ public class MDIFunctionModule : MonoBehaviour {
 			{
 				if(Main.SettingMenu)
 				{
+					if (Main.OffSetSetting)
+				    {	
+			            if(Main.InputText != "")
+				        {	
+				        CooSystem_script.set_parameter(Main.InputText);		
+				        Main.InputText = "";
+				        Main.CursorText.text = Main.InputText;
+				        Main.ProgEDITCusorPos = 57f;
+				        }
+				     }
 					if(Main.OffSetCoo && Main.OffSetTwo)
 					{
 						if(Main.InputText != "")
