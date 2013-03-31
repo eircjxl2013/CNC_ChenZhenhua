@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class OffsetSettingModule : MonoBehaviour {
 	ControlPanel Main;
@@ -41,11 +42,112 @@ public class OffsetSettingModule : MonoBehaviour {
 	void ToolOffSet () {
 		GUI.Label(new Rect(40f/1000f*Main.width, 28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"刀偏", Main.sty_Title);
 		
-		GUI.Label(new Rect(40f/1000f*Main.width,60f/1000f*Main.height,45f/1000f*Main.width,20f/1000f*Main.height),"编号", Main.sty_MostWords);
+		GUI.Label(new Rect(40f/1000f*Main.width,60f/1000f*Main.height,40f/1000f*Main.width,20f/1000f*Main.height),"编号", Main.sty_MostWords_ToolOffSet);
+		GUI.Label(new Rect(110f/1000f*Main.width,60f/1000f*Main.height,100f/1000f*Main.width,20f/1000f*Main.height),"形状(H)", Main.sty_MostWords_ToolOffSet);
+		GUI.Label(new Rect(220f/1000f*Main.width,60f/1000f*Main.height,100f/1000f*Main.width,20f/1000f*Main.height),"磨损(H)", Main.sty_MostWords_ToolOffSet);
+		GUI.Label(new Rect(330f/1000f*Main.width,60f/1000f*Main.height,100f/1000f*Main.width,20f/1000f*Main.height),"形状(D)", Main.sty_MostWords_ToolOffSet);
+		GUI.Label(new Rect(440f/1000f*Main.width,60f/1000f*Main.height,100f/1000f*Main.width,20f/1000f*Main.height),"磨损(D)", Main.sty_MostWords_ToolOffSet);
+		
+		int j = Main.ToolOffSetPage.Count;
+		for(j= 0;j<50;j++)
+		{
+			Main.ToolOffSetPage.Add(false);
+		}
+		
+		
+		Main.ToolOffSetPage[Main.ToolOffSetPage_num]= true;
+	   // Debug.Log(Main.ToolOffSetPage_num);
+		Main.number = 8 * Main.ToolOffSetPage_num;
 		
 		
 		
+		if(Main.ToolOffSetPage[Main.ToolOffSetPage_num])
+		{
+			GUI.Label(new Rect(45f/1000f*Main.width,80f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+1), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,105f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+2), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,130f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+3), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,155f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+4), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,180f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+5), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,205f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+6), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,230f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+7), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(45f/1000f*Main.width,255f/1000f*Main.height,40f/1000f*Main.width,25f/1000f*Main.height),Main.Tool_numberGet(Main.number+8), Main.sty_MostWords_ToolOffSet);
+			GUI.Label(new Rect(90f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(200f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(310f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			GUI.Label(new Rect(420f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),"", Main.sty_OffSet_Coo);
+			
+				GUI.Label(new Rect(Main.tool_setting_cursor_w/1000f*Main.width, Main.tool_setting_cursor_y/1000f*Main.height,107f/1000f*Main.width,22f/1000f*Main.height),"", Main.sty_EDITCursor);
+			
+			//显示数字
+			GUI.Label(new Rect(90f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,80f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number]), Main.sty_MostWords);
+			GUI.Label(new Rect(90f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+1]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+1]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+1]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,105f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+1]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+2]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+2]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+2]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,130f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+2]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+3]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+3]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+3]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,155f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+3]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+4]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+4]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+4]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,180f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+4]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+5]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+5]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+5]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,205f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+5]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+6]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+6]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+6]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,230f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+6]), Main.sty_MostWords);
+		    GUI.Label(new Rect(90f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_H[Main.number+7]), Main.sty_MostWords);
+			GUI.Label(new Rect(200f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_H[Main.number+7]), Main.sty_MostWords);
+			GUI.Label(new Rect(310f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.shape_D[Main.number+7]), Main.sty_MostWords);
+			GUI.Label(new Rect(420f/1000f*Main.width,255f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.wear_D[Main.number+7]), Main.sty_MostWords);
+		}
+		    GUI.Label(new Rect(45f/1000f*Main.width,282f/1000f*Main.height,150f/1000f*Main.width,25f/1000f*Main.height),"相 对 坐 标 X", Main.sty_MostWords_ToolOffSet);
+		    GUI.Label(new Rect(230f/1000f*Main.width,282f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.relative_pos.x),Main.sty_MostWords);
+		    GUI.Label(new Rect(360f/1000f*Main.width,282f/1000f*Main.height,150f/1000f*Main.width,25f/1000f*Main.height),"Y", Main.sty_MostWords_ToolOffSet);
+		    GUI.Label(new Rect(390f/1000f*Main.width,282f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.relative_pos.y),Main.sty_MostWords);
+		    GUI.Label(new Rect(45f/1000f*Main.width,306f/1000f*Main.height,150f/1000f*Main.width,25f/1000f*Main.height),"            Z", Main.sty_MostWords_ToolOffSet);
+		    GUI.Label(new Rect(230f/1000f*Main.width,306f/1000f*Main.height,110f/1000f*Main.width,25f/1000f*Main.height),Main.ToolStringGet(CooSystem_script.relative_pos.z),Main.sty_MostWords);
 		
+	
 		
 		if(Main.OffSetOne)
 		{
@@ -71,9 +173,11 @@ public class OffsetSettingModule : MonoBehaviour {
 			GUI.Label(new Rect(73f/1000f*Main.width,420f/1000f*Main.height,100f/1000f*Main.width,25f/1000f*Main.height),"No检索", Main.sty_BottomChooseMenu);
 			GUI.Label(new Rect(261f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"C输入", Main.sty_BottomChooseMenu);
 			GUI.Label(new Rect(350f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"+输入", Main.sty_BottomChooseMenu);
-			GUI.Label(new Rect(441f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"-输入", Main.sty_BottomChooseMenu);
+			GUI.Label(new Rect(441f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height)," 输入", Main.sty_BottomChooseMenu);
 		}
 	}
+	   
+	
 	//参数设置界面
 	void ArguSettings () {
 		GUI.Label(new Rect(40f/1000f*Main.width,28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"设定（手持盒）", Main.sty_Title);
@@ -156,8 +260,6 @@ public class OffsetSettingModule : MonoBehaviour {
 			GUI.Label(new Rect(420f/1000f*Main.width,420f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"（操 作）", Main.sty_BottomChooseMenu);
 		}
 	}
-	
-	
 	//工件坐标系设定界面
 	void CooOffSetting () {
 		GUI.Label(new Rect(40f/1000f*Main.width,28f/1000f*Main.height,500f/1000f*Main.width,300f/1000f*Main.height),"工件坐标系设定", Main.sty_Title);

@@ -49,6 +49,18 @@ public class MDIFunctionModule : MonoBehaviour {
 				        Main.ProgEDITCusorPos = 57f;
 				        }
 				     }
+					//刀偏界面的输入功能
+					if (Main.OffSetTool && Main.OffSetTwo)
+				    {	
+			            if(Main.InputText != "")
+				        {	
+				        CooSystem_script.Plus_Tool_Input(Main.InputText, false);		
+				        Main.InputText = "";
+				        Main.CursorText.text = Main.InputText;
+				        Main.ProgEDITCusorPos = 57f;
+				        }
+				     }
+					//刀偏界面的输入功能
 					if(Main.OffSetCoo && Main.OffSetTwo)
 					{
 						if(Main.InputText != "")

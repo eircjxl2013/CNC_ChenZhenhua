@@ -156,6 +156,19 @@ public class SoftkeyModule : MonoBehaviour {
 				Main.OffSetSetting = false;
 				Main.OffSetCoo = false;
 			}
+			
+			//刀偏界面号搜索
+			if(Main.OffSetTool && Main.OffSetTwo)
+			{
+				if(Main.InputText != "")
+				{
+					CooSystem_script.SearchToolNo(Main.InputText);
+					Main.InputText = "";
+					Main.CursorText.text = Main.InputText;
+					Main.ProgEDITCusorPos = 57f;
+				}
+			}
+			
 			else if(Main.OffSetCoo)
 			{
 				if(Main.InputText != "")
@@ -582,9 +595,16 @@ public class SoftkeyModule : MonoBehaviour {
 				Main.OffSetSetting = false;
 				Main.OffSetCoo = true;
 			}
-			else
+			//刀偏界面的C输入
+			else if(Main.OffSetTool && Main.OffSetTwo)
 			{
-				
+				 if(Main.InputText != "")
+				{	
+				CooSystem_script.C_Input(Main.InputText);		
+				Main.InputText = "";
+				Main.CursorText.text = Main.InputText;
+				Main.ProgEDITCusorPos = 57f;
+				}
 			}	
 		}
 	}
@@ -619,6 +639,19 @@ public class SoftkeyModule : MonoBehaviour {
 		
 		if(Main.SettingMenu)
 		{
+			//刀片界面+输入
+			if(Main.OffSetTool && Main.OffSetTwo)
+			{
+				if(Main.InputText != "")
+				{
+					CooSystem_script.Plus_Tool_Input(Main.InputText, true);  //第二页+输入后面的输入
+					Main.InputText = "";
+					Main.CursorText.text = Main.InputText;
+					Main.ProgEDITCusorPos = 57f;
+				}
+			}
+			
+			
 			if(Main.OffSetCoo && Main.OffSetTwo)
 			{
 				if(Main.InputText != "")
@@ -660,6 +693,17 @@ public class SoftkeyModule : MonoBehaviour {
 				{
 					Main.OffSetTwo = true;
 					Main.OffSetOne = false;
+				}
+				//刀偏界面输入功能
+				else if(Main.OffSetTool)
+				{
+					if(Main.InputText != "")
+					{
+						CooSystem_script.Plus_Tool_Input(Main.InputText, false);
+						Main.InputText = "";
+						Main.CursorText.text = Main.InputText;
+						Main.ProgEDITCusorPos = 57f;
+					}
 				}
 			}
 			if(Main.OffSetCoo)

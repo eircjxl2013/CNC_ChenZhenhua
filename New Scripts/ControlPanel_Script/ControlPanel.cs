@@ -115,6 +115,7 @@ public class ControlPanel : MonoBehaviour {
 	public GUIStyle sty_ProgEDITWindowFG;
 	public GUIStyle sty_BottomAST;
 	public GUIStyle sty_MostWords;
+	public GUIStyle sty_MostWords_ToolOffSet;        //刀偏界面字体
 	public GUIStyle sty_Code;
 	public GUIStyle sty_ProgEDITListWindowNum;
 	public GUIStyle sty_Cursor;
@@ -230,7 +231,16 @@ public class ControlPanel : MonoBehaviour {
 	public bool OffSetTwo = false;
 	public bool OffCooFirstPage = true;
 	
+	//刀偏设定界面
+	public List<bool> ToolOffSetPage = new List<bool>();
+	public int ToolOffSetPage_num = 0;
+	public int number = 0;
+	public int tool_setting = 1 ;
 	
+	public float tool_setting_cursor_y = 81.5f;
+	public float tool_setting_cursor_w = 91.5f;
+
+	//刀偏设定界面
 	
 	public List<string> FileNameList = new List<string>();
 	public List<int> FileSizeList = new List<int>();
@@ -663,6 +673,11 @@ public class ControlPanel : MonoBehaviour {
 		sty_MostWords.fontSize = 15;
 		//sty_MostWords.normal.textColor = Color.cyan;
 		
+		//刀偏界面字体设置
+		sty_MostWords_ToolOffSet.font = (Font)Resources.Load("font/simfang");
+		sty_MostWords_ToolOffSet.fontSize = 13;
+		//刀偏界面字体设置	    
+		
 		sty_Code.fontSize = 17;
 		sty_Code.fontStyle = FontStyle.Bold;
 		
@@ -744,6 +759,15 @@ public class ControlPanel : MonoBehaviour {
 		argu_setting_cursor_w = 16f;
 		argu_setting = 1;
 		//设定界面
+		
+		//刀偏界面
+		 ToolOffSetPage_num = 0; //页面数
+		  number = 0;         //序号
+		tool_setting = 1;     //黄色背景序号
+		
+	    tool_setting_cursor_y = 81.5f;
+	    tool_setting_cursor_w = 91.5f;
+		//刀偏界面
 	}
 	
 	void OnGUI()
@@ -1559,7 +1583,7 @@ public class ControlPanel : MonoBehaviour {
 		return DisplayStr;	
 	}
 	
-	//使设定输入右对齐，IO参数
+		//使设定输入右对齐，IO参数
 	public string ArguStringGet_IO(string StrValue)
 	{
 		string DisplayStr = "";
@@ -1589,6 +1613,66 @@ public class ControlPanel : MonoBehaviour {
 		else if(StrValue.Length == 7)
 		DisplayStr = " "+StrValue;
 		return DisplayStr;	
+	}
+	
+	//格式化显示数字,刀偏界面
+	public string ToolStringGet (float StrValue) 
+	{
+		int intNum = 0;	
+		string DisplayStr = "";
+		intNum = (int)StrValue;
+		
+		if(intNum < 0)
+		{
+			if(intNum > -100 && intNum <= -10)
+				DisplayStr = "  " + intNum + ".";
+			else if(intNum > -10)
+				DisplayStr = "   " + intNum + ".";
+			else if(intNum <= -100 && intNum > -1000)
+				DisplayStr = " "+intNum + ".";
+			else
+				DisplayStr = ""+intNum + ".";
+		}
+		else if(intNum == 0)
+		{
+			if(StrValue < 0)
+				DisplayStr = "   -0.";
+			else		
+			    DisplayStr = "    0" + ".";
+		}
+		else
+		{
+			if(intNum < 100 && intNum >= 10)
+				DisplayStr = "   " + intNum + ".";
+			else if(intNum < 10)
+				DisplayStr = "    " + intNum + ".";
+			else if(intNum < 1000 && intNum >= 100)	
+				DisplayStr = "  " + intNum + ".";
+			else	
+				DisplayStr = " " + intNum + ".";
+		}
+		
+		intNum = (int)(Math.Abs(StrValue*10) % 10);
+		DisplayStr += intNum;
+		intNum = (int)(Math.Abs(StrValue*100) % 10);
+		DisplayStr += intNum;
+		intNum = (int)(Math.Abs(StrValue*1000) % 10);
+		DisplayStr += intNum;
+		return DisplayStr;	
+	}
+	
+	//使刀偏界面的序号为3位
+	public string Tool_numberGet(int StrValue)
+	{
+		 string StringValue = StrValue.ToString();
+		 string DisplayStr = "";
+		 if(StringValue.Length == 1)
+			DisplayStr = "00"+StringValue;
+		 if(StringValue.Length == 2)
+			DisplayStr = "0"+StringValue;
+		 if(StringValue.Length == 3)
+			DisplayStr = StringValue;
+		  return DisplayStr;
 	}
 	
 	public string NumberFormat (int C_Num) 
